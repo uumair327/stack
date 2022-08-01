@@ -1,0 +1,95 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int isFull(int ,int );
+int isEmpty(int );
+void push(int a[20],int ,int ,int );
+void pop(int a[20],int ,int ,int  );
+void display(int a[20],int ,int ,int );
+void repeat(int a[20],int ,int ,int );
+
+int isFull(int top,int n){
+if(top==n-1){
+return 1;
+}else{
+return 0;
+}
+}
+int isEmpty(int top){
+if(top==-1){
+return 1;
+}else{
+return 0;
+}
+}
+
+void push(int a[20],int c,int n,int top){
+int l;
+l= isFull(top,n);
+
+if (l==1){
+printf("Stack Overflow:\n");
+}
+else{
+	for(int i=0;i<n;i++){
+	printf("a[%d]:",i);
+	scanf("%d",&a[i]);
+	top++;
+}
+}
+repeat(a,c,n,top);
+}
+
+void pop(int a[20],int c,int n,int top){
+int l;
+l=isEmpty(top);
+
+if(l==1){
+printf("Stack underflow:\n");
+}
+else{
+	for(int i=n-1;i>=0;i--){
+	top--;
+}
+}
+repeat(a,c,n,top);
+}
+
+void display(int a[20],int c,int n,int top){
+
+	for(int i=n-1;i>=0;i--){
+	printf("a[%d]=%d\t\t",i,a[i]);
+	top--;
+}
+repeat(a,c,n,top);
+}
+void repeat(int a[20],int c,int n,int top){
+printf("Enter your choice:\n1)for push\n2)for pop\n3)for display\n4)for exist:");
+scanf("%d",&c);
+
+switch(c){
+case 1:{
+push(a,c,n,top);
+}
+break;
+case 2:{
+pop(a,c,n,top);
+}
+break;
+case 3:{
+display(a,c,n,top);
+}
+break;
+case 4:{
+printf("you are exist from program:\n");
+}
+break;
+default:printf("invalid choice:\n");
+}
+}
+void main(){
+int a[20],n,top=-1,c;
+printf("Enter the size of Satck:\n");
+scanf("%d",&n);
+repeat(a,c,n,top);
+}
